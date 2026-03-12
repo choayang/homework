@@ -8,7 +8,7 @@ DB_NAME=${1:?"Turso DB 이름을 입력하세요. 예: your-db-name"}
 echo "스키마 생성 중..."
 npx prisma migrate diff \
   --from-empty \
-  --to-schema-datamodel prisma/schema.prisma \
+  --to-schema prisma/schema.prisma \
   --script > /tmp/turso-schema.sql
 
 echo "Turso DB ($DB_NAME) 에 스키마 적용 중..."
