@@ -27,6 +27,9 @@
     "react-dom": "19.2.3",
     "recharts": "^3.8.0"
   },
+  "overrides": {
+    "node-domexception": "file:./stubs/node-domexception"
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

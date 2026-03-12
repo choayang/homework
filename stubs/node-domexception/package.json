@@ -1,0 +1,6 @@
+{
+  "name": "node-domexception",
+  "version": "2.0.0",
+  "description": "Stub - use native DOMException (Node 17+)",
+  "main": "index.js"
+}
