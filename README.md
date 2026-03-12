@@ -48,11 +48,11 @@ npm run db:push
 npm run db:seed
 ```
 
-**Turso (배포용):**
-- [Turso](https://turso.tech)에서 DB 생성
-- `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` 설정
-- `scripts/apply-turso-schema.sh` 로 스키마 적용
-- `npm run db:seed` 로 kts123@kookmin.ac.kr 추가
+**Turso (배포 시 필수 - 요구사항):**
+- 접근 허용 회원 데이터는 **Turso 데이터베이스**에 저장되어야 함
+- [Turso](https://turso.tech)에서 DB 생성 후 `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` 설정
+- `scripts/apply-turso-schema.sh <db이름>` 로 스키마 적용
+- `TURSO_DATABASE_URL=... TURSO_AUTH_TOKEN=... npm run db:seed` 로 kts123@kookmin.ac.kr 추가
 
 ### 4. 개발 서버 실행
 
@@ -61,6 +61,16 @@ npm run dev
 ```
 
 http://localhost:3000 접속
+
+## Git Push → Vercel 자동 배포 설정
+
+1. [Vercel](https://vercel.com) 로그인 후 **Add New Project**
+2. **Import Git Repository** → GitHub 연결 후 `choayang/homework` 선택
+3. **Environment Variables**에서 아래 변수 추가 (배포 전 필수):
+   - `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`
+   - `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` (접근 허용 회원 데이터 저장용)
+4. **Deploy** 클릭
+5. 이후 `git push`할 때마다 자동 배포됨
 
 ## 배포 방법 (Vercel)
 

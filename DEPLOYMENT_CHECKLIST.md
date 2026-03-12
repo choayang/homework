@@ -1,5 +1,10 @@
 # 배포 직전 점검 체크리스트
 
+## 핵심 요구사항
+
+- [ ] **Git push → Vercel 자동 배포**: Vercel에서 GitHub 저장소 연결 완료
+- [ ] **Turso에 회원 데이터 저장**: Vercel 환경 변수에 TURSO_DATABASE_URL, TURSO_AUTH_TOKEN 설정
+
 ## 1. 환경 변수
 
 - [ ] `AUTH_SECRET` - 32자 이상 랜덤 문자열

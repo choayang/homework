@@ -4,6 +4,16 @@
 
 본 프로젝트는 **한국 공공데이터를 활용한 대시보드 웹 서비스**로, 한국 전역의 공공도서관 현황을 한눈에 조회할 수 있는 관리자형 대시보드입니다.
 
+### 요구사항 구현 현황
+
+| 요구사항 | 구현 내용 |
+|----------|-----------|
+| Git 커밋 & 푸시 시 Vercel 자동 배포 | Vercel에 GitHub 저장소 연결 시 `git push`할 때마다 자동 배포 (`vercel.json` 설정) |
+| 접근 허용 회원 데이터 Turso 저장 | Vercel 배포 시 `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` 설정 시 Turso DB에 `allowed_users` 저장 |
+| Google OAuth 로그인 | NextAuth + Google OAuth 구현 (이메일 로그인은 개발 편의용 추가) |
+| 허용 리스트 사용자만 접근 | `allowed_users` 테이블 조회 후 미등록 사용자는 `/denied` 리다이렉트 |
+| kts123@kookmin.ac.kr 회원 등록 | `npm run db:seed` 시 자동 추가 |
+
 ### 주요 목표
 
 - 한국 공공도서관 데이터를 시각화하여 제공
@@ -77,7 +87,7 @@ src/
 │   ├── db.ts                     # Prisma 클라이언트 (Turso/SQLite)
 │   ├── allowed-users.ts          # 허용 사용자 검증
 │   └── library-data.ts           # 도서관 데이터 유틸
-└── middleware.ts                 # 인증 미들웨어
+└── proxy.ts                      # 인증 프록시 (Next.js 16 Proxy)
 ```
 
 ---
