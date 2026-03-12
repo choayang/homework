@@ -2,7 +2,11 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { isAllowedUser } from "@/lib/allowed-users";
 
-export default async function HomePage() {
+export async function ProtectedLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const session = await auth();
 
   if (!session?.user?.email) {
@@ -14,5 +18,5 @@ export default async function HomePage() {
     redirect("/denied");
   }
 
-  redirect("/dashboard");
+  return <>{children}</>;
 }
